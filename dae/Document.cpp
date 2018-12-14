@@ -72,7 +72,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 	}
 
 	// Load effects...
-	unify::Path effectPath = unify::Path( filePath ).ChangeExtension( "effect" );
+	unify::Path effectPath{ ChangeExtension( filePath, "effect" ) };
 	if( effectPath.Exists() )
 	{
 		qxml::Document * effectDoc( new qxml::Document( effectPath ) );
