@@ -4,7 +4,7 @@
 #pragma once
 
 #include <me/render/Geometry.h>
-#include <rm/ResourceManagerSimple.h>
+#include <rm/ResourceManager.h>
 #include <dae/Document.h>
 
 namespace dae
