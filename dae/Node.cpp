@@ -21,7 +21,7 @@ Node::Node( IDocument & document, const dae::Node * parent, const qxml::Element 
 		if ( childNode->IsTagName( "matrix" ) )
 		{
 			std::vector< float > components;
-			components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::Matrix transform;
 			transform.Set( 0, 0, components.at( 0 ) );
 			transform.Set( 1, 0, components.at( 1 ) );
@@ -47,13 +47,13 @@ Node::Node( IDocument & document, const dae::Node * parent, const qxml::Element 
 		else if ( childNode->IsTagName( "translate" ) )
 		{
 			std::vector< float > components;
-			components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::V3< float > translation( components[ 0 ], components[ 1 ], components[ 2 ] );
 			m_matrix.Translate( translation );
 		}
 		else if ( childNode->IsTagName( "rotate" ) )
 		{
-			std::vector< float > components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			std::vector< float > components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::V3< float > axis( components[ 0 ], components[ 1 ], components[ 2 ] );
 			unify::Angle angle( unify::AngleInDegrees( components[ 3 ] ) );
 			m_matrix *= unify::MatrixRotationAboutAxis( axis, angle );
@@ -105,7 +105,7 @@ Node::Node( IDocument & document, const qxml::Element * node )
 		if ( childNode->IsTagName( "matrix" ) )
 		{
 			std::vector< float > components;
-			components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::Matrix transform;
 			transform.Set( 0, 0, components.at( 0 ) );
 			transform.Set( 1, 0, components.at( 1 ) );
@@ -131,13 +131,13 @@ Node::Node( IDocument & document, const qxml::Element * node )
 		else if ( childNode->IsTagName( "translate" ) )
 		{
 			std::vector< float > components;
-			components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::V3< float > translation( components[ 0 ], components[ 1 ], components[ 2 ] );
 			m_matrix.Translate( translation );
 		}
 		else if ( childNode->IsTagName( "rotate" ) )
 		{
-			std::vector< float > components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			std::vector< float > components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::V3< float > axis( components[ 0 ], components[ 1 ], components[ 2 ] );
 			unify::Angle angle( unify::AngleInDegrees( components[ 3 ] ) );
 			m_matrix *= unify::MatrixRotationAboutAxis( axis, angle );

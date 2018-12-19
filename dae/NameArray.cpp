@@ -9,7 +9,7 @@ NameArray::NameArray( const qxml::Element * node )
 , m_name( node->GetAttributeElse( "name", std::string() ) )
 {
 	m_stringContents = node->GetText();
-	m_arrayContents = unify::SplitOnWhitespace< std::string >( m_stringContents );
+	m_arrayContents = unify::string::SplitOnWhitespace< std::string >( m_stringContents );
 }
 
 int NameArray::GetCount() const

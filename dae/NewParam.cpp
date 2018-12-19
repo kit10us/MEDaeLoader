@@ -39,7 +39,7 @@ NewParam::NewParam(  IDocument & document, const qxml::Element * node )
 		if ( childNode->IsTagName( "translate" ) )
 		{
 			std::vector< float > components;
-			components = unify::SplitOnWhitespace< float >( childNode->GetText() );
+			components = unify::string::SplitOnWhitespace< float >( childNode->GetText() );
 			unify::V3< float > translation( components[ 0 ], components[ 1 ], components[ 2 ] );
 			m_matrix.Translate( translation ); 
 		}

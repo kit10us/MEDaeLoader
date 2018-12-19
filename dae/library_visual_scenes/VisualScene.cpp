@@ -53,7 +53,7 @@ const Node* FindNode( const Node* node, std::string id )
 {
 	if( !node ) return nullptr;
 
-	if( unify::StringIs( node->GetID(), id ) )
+	if( unify::string::StringIs( node->GetID(), id ) )
 	{
 		return node;
 	}

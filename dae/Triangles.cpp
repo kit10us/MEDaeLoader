@@ -17,7 +17,7 @@ Triangles::Triangles( IDocument & document, const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "p" ) )
 		{
-			m_p = unify::SplitOnWhitespace< int >( childNode->GetText() );
+			m_p = unify::string::SplitOnWhitespace< int >( childNode->GetText() );
 		}
 	}
 

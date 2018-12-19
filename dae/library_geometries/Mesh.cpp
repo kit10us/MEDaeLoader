@@ -184,7 +184,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 				const std::vector< float > & floats = ci.source->GetFloatArray().GetArrayContents();
 				size_t offsetOfFloats = indexOfDAEVertex * ci.input->GetStride();
 
-				if ( unify::StringIs( metaType, "POSITION" ) || unify::StringIs( metaType, "VERTEX" ) )
+				if ( unify::string::StringIs( metaType, "POSITION" ) || unify::string::StringIs( metaType, "VERTEX" ) )
 				{
 					unify::V3< float > val{
 						floats[offsetOfFloats + 0], floats[offsetOfFloats + 1], floats[offsetOfFloats + 2] 
@@ -228,12 +228,12 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 						WriteVertex( *vd, lock, vertexIndex, boneWeightsE, boneWeights );
 					}
 				}
-				else if ( unify::StringIs( metaType, "NORMAL" ) )
+				else if ( unify::string::StringIs( metaType, "NORMAL" ) )
 				{
 					unify::V3< float > val( floats[ offsetOfFloats + 0 ], floats[ offsetOfFloats + 1 ], floats[ offsetOfFloats + 2 ] );
 					WriteVertex( *vd, lock, vertexIndex, normalE, val );
 				}
-				else if ( unify::StringIs( metaType, "TEXCOORD" ) )
+				else if ( unify::string::StringIs( metaType, "TEXCOORD" ) )
 				{
 					WriteVertex( *vd, lock, vertexIndex, texE, unify::TexCoords( floats[ offsetOfFloats + 0 ], floats[ offsetOfFloats + 1 ] * -1.0f ) );
 				}

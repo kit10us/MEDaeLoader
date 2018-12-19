@@ -11,7 +11,7 @@ FloatArray::FloatArray( const qxml::Element * node )
 , m_magnitude( node->GetAttributeElse< int >( "magnitude", 38 ) )
 {
 	m_stringContents = node->GetText();
-	m_arrayContents = unify::SplitOnWhitespace< float >( m_stringContents );
+	m_arrayContents = unify::string::SplitOnWhitespace< float >( m_stringContents );
 }
 
 int FloatArray::GetCount() const

@@ -39,11 +39,11 @@ Polylist::Polylist( IDocument & document, const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "vcount" ) )
 		{
-			m_vcount = unify::SplitOnWhitespace< int >( childNode->GetText() );
+			m_vcount = unify::string::SplitOnWhitespace< int >( childNode->GetText() );
 		}
 		else if ( childNode->IsTagName( "p" ) )
 		{
-			m_p = unify::SplitOnWhitespace< int >( childNode->GetText() );
+			m_p = unify::string::SplitOnWhitespace< int >( childNode->GetText() );
 		}
 	}
 }

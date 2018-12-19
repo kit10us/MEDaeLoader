@@ -13,23 +13,23 @@ Input_Shared::Input_Shared( const qxml::Element * node )
 		m_set = node->GetAttribute< int >( "set" );
 	}
 
-	if( unify::StringIs( m_semantic, "VERTEX" ) )
+	if( unify::string::StringIs( m_semantic, "VERTEX" ) )
 	{
 		m_stride = 3;
 	}
-	else if( unify::StringIs( m_semantic, "POSITION" ) )
+	else if( unify::string::StringIs( m_semantic, "POSITION" ) )
 	{
 		m_stride = 3;
 	}
-	else if( unify::StringIs( m_semantic, "NORMAL" ) )
+	else if( unify::string::StringIs( m_semantic, "NORMAL" ) )
 	{
 		m_stride = 3;
 	}
-	else if( unify::StringIs( m_semantic, "COLOR" ) )
+	else if( unify::string::StringIs( m_semantic, "COLOR" ) )
 	{
 		m_stride = 1;
 	}
-	else if( unify::StringIs( m_semantic, "TEXCOORD" ) )
+	else if( unify::string::StringIs( m_semantic, "TEXCOORD" ) )
 	{
 		m_stride = 2;
 	}
