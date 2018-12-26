@@ -2,6 +2,7 @@
 // All Rights Reserved
 
 #include <dae/GeometrySourceFactory.h>
+#include <me/factory/GeometryFactory.h>
 #include <memory.h>
 #include <me/render/IRenderer.h>
 #include <me/game/IGame.h>
@@ -69,7 +70,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && ! path.Empty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( path );
+				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path );
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
@@ -89,7 +90,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && !path.Empty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( path );
+				vs = gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path );
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
@@ -119,7 +120,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && !path.Empty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( path );
+				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path );
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
@@ -139,7 +140,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && !path.Empty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( path );
+				vs = gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path );
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
@@ -152,7 +153,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 	auto effectSolver = new MyEffectSolver( color, texture );
 
 	dae::GeometrySourceFactory * daeFactory = new dae::GeometrySourceFactory( gameInstance, effectSolver );
-	gameInstance->GetManager< Geometry >()->AddFactory( ".dae", GeometryFactoryPtr( daeFactory ) );
+	gameInstance->GetManager< Geometry >()->AddFactory( ".dae", GeometryFactory::ptr( daeFactory ) );
 
 	return true;
 }
