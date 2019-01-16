@@ -165,7 +165,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 		render::VertexElement boneWeightsE = render::CommonVertexElement::Generic( stream, 2, me::render::ElementFormat::Float4 );
 
 		std::shared_ptr< unsigned char > vertices( new unsigned char[ vd->GetSizeInBytes( 0 ) * numberOfVertices ] );
-		unify::DataLock lock( vertices.get(), vd->GetSizeInBytes( 0 ), numberOfVertices, unify::DataLock::ReadWrite, 0 );
+		unify::DataLock lock( vertices.get(), vd->GetSizeInBytes( 0 ), numberOfVertices, unify::DataLockAccess::ReadWrite, 0 );
 
 		unify::BBox< float > bbox;
 
