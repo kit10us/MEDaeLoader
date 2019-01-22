@@ -1,0 +1,7 @@
+<?xml profile="1.0" encoding="iso-8859-1"?>
+<xml>
+  <effect>
+    <pixelshader name="TextureSimple" source="TextureSimple.xml"/>
+    <vertexshader name="TextureSimple" source="TextureSimple.xml"/>
+  </effect>
+</xml>

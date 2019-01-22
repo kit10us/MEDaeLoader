@@ -1,0 +1,65 @@
+ Entering Game::Initialize block
+
+ Entering ::xmlLoader first pass block
+
+[Game::Initialize ::xmlLoader first pass ] loading "main.xml"
+
+[ResourceManager::Add] Script manager: adding "main.xml" (main.xml).
+
+[Game::Initialize ::xmlLoader first pass ] loading "../common/Common.xml"
+
+[ResourceManager::Add] Script manager: adding "../common/Common.xml" (../common/Common.xml).
+
+ Entering Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" block
+
+ Entering Extension::Extention block
+
+ Entering DefaultDebug block
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention ] Log file: log_Debug_DX11.log
+
+ Entering Game::AddExtension "../../../../extensions/Debug/MEASELoader.dll" block
+
+ Entering Extension::Extention block
+
+ Entering OS Startup block
+
+ Entering Scene::ChangeScene block
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene ] Starting scene "main" Begin
+
+ Entering Scene::OnBeforeStart block
+
+ Entering ::Component "ObjectAllocatorComponent block
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene Scene::OnBeforeStart ::Component "ObjectAllocatorComponent ] enabled
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene ] OnStart Begin
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene ] OnStart End
+
+ Entering Scene::OnAfterStart block
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene Scene::OnAfterStart ] Component "ObjectAllocatorComponent" OnAfterStart Begin
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene Scene::OnAfterStart ] Component "ObjectAllocatorComponent" OnAfterStart Done
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Scene::ChangeScene ] Start scene "main" Done
+
+ Entering Game::Private_Shutdown block
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] Shutting down
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] OnDetach begin
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] Detaching SceneManager
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] Detaching ActionFactory
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] OnDetach done
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] time: Tue Jan 22 16:52:36 2019
+
+
+[Game::Initialize ::xmlLoader first pass Game::AddExtension "../../../../extensions/Debug/MERendererDX11.dll" Extension::Extention Game::Private_Shutdown ] frames: 920, total delta: 1.918122s,  average fps:521.343323
+

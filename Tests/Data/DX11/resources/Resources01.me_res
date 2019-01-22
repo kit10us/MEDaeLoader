@@ -1,0 +1,7 @@
+<res>
+
+<asset type="effect" name="ColorSimple" source="ColorSimple.effect"/>
+<asset type="effect" name="TextureSimple" source="TextureSimple.effect"/>
+<asset type="geometry" name="SwordASE" source="SwordTextured/SwordTextured.ase"/>
+
+</res>
