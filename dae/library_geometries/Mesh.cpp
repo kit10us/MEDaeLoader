@@ -152,6 +152,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 		size_t numberOfVertices = polylist->GetP().size() / pStride;
 
 		render::BufferSet & set = accumulatedPL.AddBufferSet();
+		set.SetEffect( myEffect );
 
 		const render::VertexDeclaration::ptr vd = myEffect->GetVertexShader()->GetVertexDeclaration();
 		unsigned short stream = 0;
@@ -281,20 +282,19 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 			}
 
 			set.AddIndexBuffer( { { { numberOfIndices, &indices[0] } }, render::BufferUsage::Staging } );
-
-			set.AddMethod( render::RenderMethod::CreateTriangleListIndexed( numberOfVertices, numberOfIndices, 0, 0, myEffect ) );
+			set.AddMethod( render::RenderMethod::CreateTriangleListIndexed( numberOfVertices, numberOfIndices, 0, 0 ) );
 		}
 		break;
 
 		case Polylist::TrianglesType:
 		{
-			set.AddMethod( render::RenderMethod::CreateTriangleList( 0, numberOfVertices / 3, myEffect ) );
+			set.AddMethod( render::RenderMethod::CreateTriangleList( 0, numberOfVertices / 3 ) );
 		}
 		break;
 
 		case Polylist::LinesType:
 		{
-			set.AddMethod( render::RenderMethod::CreateLineList( 0, numberOfVertices / 2, myEffect ) );
+			set.AddMethod( render::RenderMethod::CreateLineList( 0, numberOfVertices / 2 ) );
 		}
 		break;
 		}
