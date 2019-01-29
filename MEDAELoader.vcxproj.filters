@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dae\Accessor.cpp" />
+    <ClCompile Include="dae\BindMaterial.cpp" />
+    <ClCompile Include="dae\BindMaterial_TechniqueCommon.cpp" />
+    <ClCompile Include="dae\DaeDLL.cpp" />
+    <ClCompile Include="dae\Document.cpp" />
+    <ClCompile Include="dae\DocumentNode.cpp" />
+    <ClCompile Include="dae\Exceptions.cpp" />
+    <ClCompile Include="dae\Extra.cpp" />
+    <ClCompile Include="dae\FloatArray.cpp" />
+    <ClCompile Include="dae\GeometrySourceFactory.cpp" />
+    <ClCompile Include="dae\Input_Shared.cpp" />
+    <ClCompile Include="dae\Input_Unshared.cpp" />
+    <ClCompile Include="dae\InstanceSet.cpp" />
+    <ClCompile Include="dae\InstanceVisualScene.cpp" />
+    <ClCompile Include="dae\NameArray.cpp" />
+    <ClCompile Include="dae\NewParam.cpp" />
+    <ClCompile Include="dae\Node.cpp" />
+    <ClCompile Include="dae\Polylist.cpp" />
+    <ClCompile Include="dae\Profile_Technique.cpp" />
+    <ClCompile Include="dae\ProfileCommon.cpp" />
+    <ClCompile Include="dae\Scene.cpp" />
+    <ClCompile Include="dae\library_controllers\Skin.cpp" />
+    <ClCompile Include="dae\Source.cpp" />
+    <ClCompile Include="dae\Source_TechniqueCommon.cpp" />
+    <ClCompile Include="dae\Technique_Core.cpp" />
+    <ClCompile Include="dae\Triangles.cpp" />
+    <ClCompile Include="dae\Vertices.cpp" />
+    <ClCompile Include="dae\library_visual_scenes\InstanceController.cpp">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_visual_scenes\InstanceGeometry.cpp">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_visual_scenes\InstanceEffect.cpp">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_visual_scenes\InstanceMaterial.cpp">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_visual_scenes\LibraryVisualScenes.cpp">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_visual_scenes\VisualScene.cpp">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_controllers\Controller.cpp">
+      <Filter>dae\library_controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_controllers\Joints.cpp">
+      <Filter>dae\library_controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_controllers\LibraryControllers.cpp">
+      <Filter>dae\library_controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_controllers\Morph.cpp">
+      <Filter>dae\library_controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_controllers\VertexWeights.cpp">
+      <Filter>dae\library_controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_effects\Effect.cpp">
+      <Filter>dae\library_effects</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_effects\LibraryEffects.cpp">
+      <Filter>dae\library_effects</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_effects\Shading.cpp">
+      <Filter>dae\library_effects</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_geometries\Geometry.cpp">
+      <Filter>dae\library_geometries</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_geometries\LibraryGeometries.cpp">
+      <Filter>dae\library_geometries</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_geometries\Mesh.cpp">
+      <Filter>dae\library_geometries</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_images\Image.cpp">
+      <Filter>dae\library_images</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_images\LibraryImages.cpp">
+      <Filter>dae\library_images</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_materials\LibraryMaterials.cpp">
+      <Filter>dae\library_materials</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_materials\Material.cpp">
+      <Filter>dae\library_materials</Filter>
+    </ClCompile>
+    <ClCompile Include="dae\library_nodes\LibraryNodes.cpp">
+      <Filter>dae\library_nodes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dae\Accessor.h" />
+    <ClInclude Include="dae\BindMaterial.h" />
+    <ClInclude Include="dae\BindMaterial_TechniqueCommon.h" />
+    <ClInclude Include="dae\Document.h" />
+    <ClInclude Include="dae\DocumentNode.h" />
+    <ClInclude Include="dae\Exceptions.h" />
+    <ClInclude Include="dae\Extra.h" />
+    <ClInclude Include="dae\FloatArray.h" />
+    <ClInclude Include="dae\GeometrySourceFactory.h" />
+    <ClInclude Include="dae\IDocument.h" />
+    <ClInclude Include="dae\util\IEffectSolver.h" />
+    <ClInclude Include="dae\Input_Shared.h" />
+    <ClInclude Include="dae\Input_Unshared.h" />
+    <ClInclude Include="dae\InstanceSet.h" />
+    <ClInclude Include="dae\InstanceVisualScene.h" />
+    <ClInclude Include="dae\Library.h" />
+    <ClInclude Include="dae\NameArray.h" />
+    <ClInclude Include="dae\NewParam.h" />
+    <ClInclude Include="dae\Node.h" />
+    <ClInclude Include="dae\Polylist.h" />
+    <ClInclude Include="dae\Profile_Technique.h" />
+    <ClInclude Include="dae\ProfileCommon.h" />
+    <ClInclude Include="dae\Scene.h" />
+    <ClInclude Include="dae\library_controllers\Skin.h" />
+    <ClInclude Include="dae\Source.h" />
+    <ClInclude Include="dae\Source_TechniqueCommon.h" />
+    <ClInclude Include="dae\Technique_Core.h" />
+    <ClInclude Include="dae\Triangles.h" />
+    <ClInclude Include="dae\Vertices.h" />
+    <ClInclude Include="dae\library_visual_scenes\VisualScene.h">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_visual_scenes\InstanceController.h">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_visual_scenes\InstanceGeometry.h">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_visual_scenes\InstanceEffect.h">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_visual_scenes\InstanceMaterial.h">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_visual_scenes\LibraryVisualScenes.h">
+      <Filter>dae\library_visual_scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_controllers\Controller.h">
+      <Filter>dae\library_controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_controllers\Joints.h">
+      <Filter>dae\library_controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_controllers\LibraryControllers.h">
+      <Filter>dae\library_controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_controllers\Morph.h">
+      <Filter>dae\library_controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_controllers\VertexWeights.h">
+      <Filter>dae\library_controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_effects\Effect.h">
+      <Filter>dae\library_effects</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_effects\LibraryEffects.h">
+      <Filter>dae\library_effects</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_effects\Shading.h">
+      <Filter>dae\library_effects</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_geometries\Geometry.h">
+      <Filter>dae\library_geometries</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_geometries\LibraryGeometries.h">
+      <Filter>dae\library_geometries</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_geometries\Mesh.h">
+      <Filter>dae\library_geometries</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_images\Image.h">
+      <Filter>dae\library_images</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_images\LibraryImages.h">
+      <Filter>dae\library_images</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_materials\LibraryMaterials.h">
+      <Filter>dae\library_materials</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_materials\Material.h">
+      <Filter>dae\library_materials</Filter>
+    </ClInclude>
+    <ClInclude Include="dae\library_nodes\LibraryNodes.h">
+      <Filter>dae\library_nodes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="dae">
+      <UniqueIdentifier>{d2d69aa8-96a3-4cc4-b6c8-09063bdfafb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_controllers">
+      <UniqueIdentifier>{f9dad04e-ff0d-4e1d-b2cc-7b55033f0700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_effects">
+      <UniqueIdentifier>{c8239f2b-5004-463e-a2a9-93a4af590ca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_geometries">
+      <UniqueIdentifier>{bba1f099-c95c-4705-9cce-75c37c9fa9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_images">
+      <UniqueIdentifier>{ab0f51a3-736f-45b6-ad91-f5c17dbe13e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_materials">
+      <UniqueIdentifier>{4f851405-afc4-4426-aa7d-1e3c9c8a0497}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_nodes">
+      <UniqueIdentifier>{81a0a37b-947c-4744-83cd-a3b59791407f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dae\library_visual_scenes">
+      <UniqueIdentifier>{6ff2abf0-2d1d-412b-a825-e165f764dcd1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
