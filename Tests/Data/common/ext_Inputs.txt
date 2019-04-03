@@ -1,7 +1,0 @@
-<setup>
-
-<extension source="?EXTENSIONS?/DXIKeyboard.dll"/>
-<extension source="?EXTENSIONS?/DXIMouse.dll"/>
-<extension source="?EXTENSIONS?/DXIGamepad.dll"/>
-
-</setup>

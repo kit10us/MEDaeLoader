@@ -1,8 +1,0 @@
-<xml>
-<!-- Make sure we do this last, so we can benefit from all register actions, conditions and input sources. -->
-<inputs>
-	<inputaction input="keyboard" condition="ButtonPressed" name="Escape">
-		<action name="QuitGame"/>
-	</inputaction>
-</inputs>
-</xml>

@@ -23,3 +23,13 @@ me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Path path, void
 	mesh->ComputeBounds();
 	return me::render::Geometry::ptr( mesh );
 }
+
+me::render::Geometry::ptr GeometrySourceFactory::Produce( void * data )
+{
+	throw me::exception::FailedToCreate( "Failed to create geometry from raw data." );
+}
+
+me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Parameters parameters )
+{
+	throw me::exception::FailedToCreate( "Failed to create geometry from paramters." );
+}
