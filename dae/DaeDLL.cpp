@@ -108,7 +108,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			const auto node = element->FindFirstElement( shaderElementName );
 			if ( ! node )
 			{
-				gameInstance->Debug()->ReportError( me::ErrorLevel::Critical, "MEDae", "Cannot find \"" + shaderElementName + "\" node in \"" + element->GetDocument()->GetPath().ToString() + "\"." );
+				throw unify::Exception( "Cannot find \"" + shaderElementName + "\" node in \"" + element->GetDocument()->GetPath().ToString() + "\"." );
 			}
 
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
@@ -131,6 +131,11 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 		IVertexShader::ptr vs;
 		{
 			const auto node = element->FindFirstElement( "texturevs" );
+			if( !node )
+			{
+				throw unify::Exception( "Cannot find \"texturevs\" node in \"" + element->GetDocument()->GetPath().ToString() + "\"." );
+			}
+
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
 			unify::Path path( node->GetAttributeElse< std::string >( "source", std::string() ) );
 
