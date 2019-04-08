@@ -14,8 +14,7 @@ namespace dae
 	public:
 		GeometrySourceFactory( me::game::Game * renderer, util::IEffectSolver * effectSolver );
 
-		me::render::Geometry::ptr Produce( unify::Path path, void * data ) override;
-		me::render::Geometry::ptr Produce( void * data ) override;
+		me::render::Geometry::ptr Produce( unify::Path path, unify::Parameters parameters ) override;
 		me::render::Geometry::ptr Produce( unify::Parameters parameters ) override;
 
 	private:

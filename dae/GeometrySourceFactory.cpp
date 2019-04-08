@@ -14,7 +14,7 @@ GeometrySourceFactory::GeometrySourceFactory( me::game::Game * renderer, util::I
 {
 }
 
-me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Path path, void * data )
+me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Path path, unify::Parameters parameters )
 {
 	dae::Document doc( m_game, path, m_effectSolver.get() );
 	me::render::Mesh * mesh = new me::render::Mesh( "file: " + path.ToString(), m_game->GetOS()->GetRenderer(0) );
@@ -22,11 +22,6 @@ me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Path path, void
 	visualScene.Build( *mesh );
 	mesh->ComputeBounds();
 	return me::render::Geometry::ptr( mesh );
-}
-
-me::render::Geometry::ptr GeometrySourceFactory::Produce( void * data )
-{
-	throw me::exception::FailedToCreate( "Failed to create geometry from raw data." );
 }
 
 me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Parameters parameters )
