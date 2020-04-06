@@ -107,16 +107,16 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 					}
 					else
 					{
-						debug->ReportError( me::ErrorLevel::Failure, "DAE Loader", "VertexShader must have name and/or path!" );
+						debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "VertexShader must have name and/or path!" );
 					}
 				}
 				catch( std::exception ex )
 				{
-					debug->ReportError( me::ErrorLevel::Failure, "DAE Loader", "failed in loading effect file \"" + effectPath.ToString() + "\"! " + ex.what() );
+					debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "failed in loading effect file \"" + effectPath.ToString() + "\"! " + ex.what() );
 				}
 				catch( ... )
 				{
-					debug->ReportError( me::ErrorLevel::Failure, "DAE Loader", "failed in loading effect file \"" + effectPath.ToString() + "\"!" );
+					debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "failed in loading effect file \"" + effectPath.ToString() + "\"!" );
 				}
 			}
 
@@ -139,7 +139,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 				}
 				else
 				{
-					debug->ReportError( me::ErrorLevel::Failure, "DAE Loader", "Failed in loading effect file \"" + effectPath.ToString() + "\"! PixelShader must have name and/or path!" );
+					debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "Failed in loading effect file \"" + effectPath.ToString() + "\"! PixelShader must have name and/or path!" );
 				}
 			}
 
