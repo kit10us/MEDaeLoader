@@ -6,6 +6,7 @@
 #include <memory.h>
 #include <me/render/IRenderer.h>
 #include <me/game/IGame.h>
+#include <me/debug/ErrorLevel.h>
 
 void Deleter( dae::GeometrySourceFactory * factory )
 {
@@ -108,7 +109,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			const auto node = element->FindFirstElement( shaderElementName );
 			if ( ! node )
 			{
-				throw unify::Exception( "Cannot find \"" + shaderElementName + "\" node in \"" + element->GetDocument()->GetPath().ToString() + "\"." );
+				gameInstance->Debug()->ReportError( me::debug::ErrorLevel::Failure, "Cannot find \"" + shaderElementName + "\" node in \"" + element->GetDocument()->GetPath().ToString() + "\".", false, false );
 			}
 
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
@@ -133,7 +134,7 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			const auto node = element->FindFirstElement( "texturevs" );
 			if( !node )
 			{
-				throw unify::Exception( "Cannot find \"texturevs\" node in \"" + element->GetDocument()->GetPath().ToString() + "\"." );
+				gameInstance->Debug()->ReportError( me::debug::ErrorLevel::Failure, "Cannot find \"texturevs\" node in \"" + element->GetDocument()->GetPath().ToString() + "\".", true, true );
 			}
 
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );

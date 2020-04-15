@@ -3,6 +3,7 @@
 
 #include <dae/Document.h>
 #include <me/game/Game.h>
+#include <me/debug/ErrorLevel.h>
 
 using namespace dae;
 
@@ -112,11 +113,11 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 				}
 				catch( std::exception ex )
 				{
-					debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "failed in loading effect file \"" + effectPath.ToString() + "\"! " + ex.what() );
+					debug->ReportError( me::debug::ErrorLevel::Failure, "failed in loading effect file \"" + effectPath.ToString() + "\"! " + ex.what() );
 				}
 				catch( ... )
 				{
-					debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "failed in loading effect file \"" + effectPath.ToString() + "\"!" );
+					debug->ReportError( me::debug::ErrorLevel::Failure, "failed in loading effect file \"" + effectPath.ToString() + "\"!" );
 				}
 			}
 
@@ -139,7 +140,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 				}
 				else
 				{
-					debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "Failed in loading effect file \"" + effectPath.ToString() + "\"! PixelShader must have name and/or path!" );
+					debug->ReportError( me::debug::ErrorLevel::Failure, "Failed in loading effect file \"" + effectPath.ToString() + "\"! PixelShader must have name and/or path!" );
 				}
 			}
 
