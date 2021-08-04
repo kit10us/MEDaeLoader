@@ -90,7 +90,7 @@ namespace dae
 		{
 			realName = name;
 		}
-		std::map< std::string, T * >::const_iterator itr = m_lookup.find( realName );
+		auto itr = m_lookup.find( realName );
 		return ( itr == m_lookup.end() ) ? 0 : itr->second;
 	}
 }
