@@ -31,7 +31,7 @@ namespace dae
 	private:
 		std::string m_source_attribute;
 		std::vector< std::shared_ptr< Source > > m_source;
-		std::map< std::string, size_t, unify::string::CaseInsensitiveLessThanTest > m_source_map;
+		std::map< std::string, size_t, unify::string::CaseInsensitiveLessThanEqualTest > m_source_map;
 		Joints::ptr m_joints;
 		unify::Matrix m_bind_shape_matrix;
 		VertexWeights::ptr m_vertex_weights;

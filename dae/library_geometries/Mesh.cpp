@@ -166,7 +166,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 		render::VertexElement boneWeightsE = render::CommonVertexElement::Generic( stream, 2, me::render::ElementFormat::Float4 );
 
 		std::shared_ptr< unsigned char > vertices( new unsigned char[ vd->GetSizeInBytes( 0 ) * numberOfVertices ] );
-		unify::DataLock lock( vertices.get(), vd->GetSizeInBytes( 0 ), numberOfVertices, unify::DataLockAccess::ReadWrite, 0 );
+		unify::DataLock lock( vertices.get(), (unsigned int)vd->GetSizeInBytes( 0 ), (unsigned int)numberOfVertices, unify::DataLockAccess::ReadWrite, 0 );
 
 		unify::BBox< float > bbox;
 
@@ -267,12 +267,12 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 			}
 
 			std::vector< render::Index32 > indices( numberOfIndices );
-			size_t vertexHead = 0; // Tracks the first vertex, increases by vc each iteration.
-			size_t index = 0;
-			for( size_t vci = 0; vci < polylist->GetVCount().size(); ++vci )
+			me::render::Index32 vertexHead = 0; // Tracks the first vertex, increases by vc each iteration.
+			me::render::Index32 index = 0;
+			for(me::render::Index32 vci = 0; vci < (me::render::Index32)polylist->GetVCount().size(); ++vci )
 			{
-				size_t vc = polylist->GetVCount()[ vci ];
-				for( size_t indexOffset = 0; indexOffset < vc - 2; ++indexOffset )
+				me::render::Index32 vc = polylist->GetVCount()[ vci ];
+				for(me::render::Index32 indexOffset = 0; indexOffset < vc - 2; ++indexOffset )
 				{
 					indices[ index++ ] = vertexHead + indexOffset;
 					indices[ index++ ] = vertexHead + indexOffset + 1;
@@ -282,19 +282,19 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 			}
 
 			set.AddIndexBuffer( { { { numberOfIndices, &indices[0] } }, render::BufferUsage::Staging } );
-			set.AddMethod( render::RenderMethod::CreateTriangleListIndexed( numberOfVertices, numberOfIndices, 0, 0 ) );
+			set.AddMethod( render::RenderMethod::CreateTriangleListIndexed( numberOfVertices, (unsigned int)numberOfIndices, 0, 0 ) );
 		}
 		break;
 
 		case Polylist::TrianglesType:
 		{
-			set.AddMethod( render::RenderMethod::CreateTriangleList( 0, numberOfVertices / 3 ) );
+			set.AddMethod( render::RenderMethod::CreateTriangleList( 0, (unsigned int)(numberOfVertices / 3) ) );
 		}
 		break;
 
 		case Polylist::LinesType:
 		{
-			set.AddMethod( render::RenderMethod::CreateLineList( 0, numberOfVertices / 2 ) );
+			set.AddMethod( render::RenderMethod::CreateLineList( 0, (unsigned int)(numberOfVertices / 2) ) );
 		}
 		break;
 		}
