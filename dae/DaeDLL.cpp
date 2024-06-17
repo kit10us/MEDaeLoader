@@ -56,6 +56,12 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 		}
 	};
 
+	auto debug = gameInstance->Debug();
+	std::function<void(std::string)> report =
+		[&](std::string message)
+		{
+			debug->ReportError(debug::ErrorLevel::Failure, message);
+		};
 
 	Effect::ptr color;
 	{
@@ -71,11 +77,12 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && ! path.Empty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path );
+				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path ).Else(report);
+
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( name, path );
+				ps = gameInstance->GetManager< IPixelShader >()->Add( name, path ).Else(report);
 			}
 		}
 
@@ -91,11 +98,11 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && !path.Empty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path );
+				vs = gameInstance->GetManager< IVertexShader >()->Add(path.ToString(), path).Else(report);
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( name, path );
+				vs = gameInstance->GetManager< IVertexShader >()->Add( name, path ).Else(report);
 			}
 		}
 		color.reset( new Effect( vs, ps ) );
@@ -121,11 +128,11 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && !path.Empty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path );
+				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path).Else(report);
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( name, path );
+				ps = gameInstance->GetManager< IPixelShader >()->Add( name, path ).Else(report);
 			}
 		}
 
@@ -146,11 +153,11 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			}
 			else if( name.empty() && !path.Empty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path );
+				vs = gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path ).Else(report);
 			}
 			else if( !name.empty() && !path.Empty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( name, path );
+				vs = gameInstance->GetManager< IVertexShader >()->Add( name, path ).Else(report);
 			}
 		}
 		texture.reset( new Effect( vs, ps ) );

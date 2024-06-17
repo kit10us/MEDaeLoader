@@ -96,7 +96,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 				{
 					if( !name.empty() && !source.Empty() )
 					{
-						vs = gameInstance->GetManager< me::render::IVertexShader >()->Add( name, source );
+						vs = gameInstance->GetManager< me::render::IVertexShader >()->Add( name, source )();
 					}
 					else if( !name.empty() && source.Empty() )
 					{
@@ -104,7 +104,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 					}
 					else if( name.empty() && !source.Empty() )
 					{
-						vs = gameInstance->GetManager< me::render::IVertexShader >()->Add( source.ToString(), source );
+						vs = gameInstance->GetManager< me::render::IVertexShader >()->Add( source.ToString(), source )();
 					}
 					else
 					{
@@ -128,7 +128,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 
 				if( !name.empty() && !source.Empty() )
 				{
-					ps = gameInstance->GetManager< me::render::IPixelShader >()->Add( name, source );
+					ps = gameInstance->GetManager< me::render::IPixelShader >()->Add( name, source )();
 				}
 				else if( !name.empty() && source.Empty() )
 				{
@@ -136,7 +136,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 				}
 				else if( name.empty() && !source.Empty() )
 				{
-					ps = gameInstance->GetManager< me::render::IPixelShader >()->Add( source.ToString(), source );
+					ps = gameInstance->GetManager< me::render::IPixelShader >()->Add( source.ToString(), source )();
 				}
 				else
 				{
