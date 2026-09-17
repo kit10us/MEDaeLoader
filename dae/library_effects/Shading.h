@@ -5,7 +5,7 @@
 
 #include <dae/Exceptions.h>
 #include <qxml/QXML.h>
-#include <unify/ColorUnit.h>
+#include <unify/Colors.h>
 
 namespace dae
 {

@@ -18,7 +18,7 @@ Shading::Property::Property( const qxml::Element * node )
 	if ( node->HasElements( "float" ) )
 	{
 		m_type = FloatType;
-		m_float = unify::Cast< float >( node->GetElement( "float" )->GetText() );
+		m_float = *unify::FromString< float >( node->GetElement( "float" )->GetText() );
 	}
 	else if ( node->HasElements( "color" ) )
 	{
@@ -98,7 +98,7 @@ Shading::Shading( const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "shininess" ) )
 		{
-			m_shininess = unify::Cast< float >( childNode->GetElement( "float" )->GetText() );
+			m_shininess = *unify::FromString< float >( childNode->GetElement( "float" )->GetText() );
 		}
 		else if ( childNode->IsTagName( "reflective" ) )
 		{
@@ -106,7 +106,7 @@ Shading::Shading( const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "reflectivity" ) )
 		{
-			m_reflectivity = unify::Cast< float >( childNode->GetElement( "float" )->GetText() );
+			m_reflectivity = *unify::FromString< float >( childNode->GetElement( "float" )->GetText() );
 		}
 		else if ( childNode->IsTagName( "transparent" ) )
 		{
@@ -114,11 +114,11 @@ Shading::Shading( const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "transparency" ) )
 		{
-			m_transparency = unify::Cast< float >( childNode->GetElement( "float" )->GetText() );
+			m_transparency = *unify::FromString< float >( childNode->GetElement( "float" )->GetText() );
 		}
 		else if ( childNode->IsTagName( "index_of_refraction" ) )
 		{
-			m_index_of_refraction = unify::Cast< float >( childNode->GetElement( "float" )->GetText() );
+			m_index_of_refraction = *unify::FromString< float >( childNode->GetElement( "float" )->GetText() );
 		}
 	}
 }

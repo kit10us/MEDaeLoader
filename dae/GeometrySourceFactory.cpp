@@ -14,7 +14,7 @@ GeometrySourceFactory::GeometrySourceFactory( me::game::Game * renderer, util::I
 {
 }
 
-me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Path path, unify::Parameters parameters )
+unify::Result<me::render::Geometry::ptr> GeometrySourceFactory::Produce( unify::Path path, unify::Parameters parameters )
 {
 	dae::Document doc( m_game, path, m_effectSolver.get() );
 	me::render::Mesh * mesh = new me::render::Mesh( "file: " + path.ToString(), m_game->GetOS()->GetRenderer(0) );
@@ -24,7 +24,7 @@ me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Path path, unif
 	return me::render::Geometry::ptr( mesh );
 }
 
-me::render::Geometry::ptr GeometrySourceFactory::Produce( unify::Parameters parameters )
+unify::Result<me::render::Geometry::ptr> GeometrySourceFactory::Produce( unify::Parameters parameters )
 {
-	throw me::exception::FailedToCreate( "Failed to create geometry from paramters." );
+	return unify::Failure{ "Failed to create geometry from paramters." };
 }

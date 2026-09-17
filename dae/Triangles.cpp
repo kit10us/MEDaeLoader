@@ -17,7 +17,7 @@ Triangles::Triangles( IDocument & document, const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "p" ) )
 		{
-			m_p = unify::string::SplitOnWhitespace< int >( childNode->GetText() );
+			m_p = unify::Split< int >( childNode->GetText() );
 		}
 	}
 
@@ -26,7 +26,11 @@ Triangles::Triangles( IDocument & document, const qxml::Element * node )
 	{
 		format.Add( { input->GetSemantic(), input->GetSemantic() } );
 	}
-	m_vertexFormat.reset( new me::render::VertexDeclaration( format ) );
+	auto vertex_declaration = std::make_shared<me::render::VertexDeclaration>();
+	auto result = vertex_declaration->Create( format );
+	// SAS TODO: Once we move this out of the constructor to a 'Create' or such function, we need to validate the results.
+	m_vertexFormat = vertex_declaration;
+	//m_vertexFormat.reset( new me::render::VertexDeclaration( format ) );
 }
 
 std::string Triangles::GetName() const

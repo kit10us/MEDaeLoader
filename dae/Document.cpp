@@ -90,21 +90,21 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 			if( vsNode )
 			{
 				std::string name = vsNode->GetAttributeElse( "name", std::string() );
-				unify::Path source = vsNode->GetAttributeElse( "source", unify::Path() );
+				unify::Path source(vsNode->GetAttributeElse( "source",std::string() ));
 
 				try
 				{
-					if( !name.empty() && !source.Empty() )
+					if( !name.empty() && !source.IsEmpty() )
 					{
-						vs = gameInstance->GetManager< me::render::IVertexShader >()->Add( name, source )();
+						vs = *gameInstance->GetManager< me::render::IVertexShader >()->Add( name, source );
 					}
-					else if( !name.empty() && source.Empty() )
+					else if( !name.empty() && source.IsEmpty() )
 					{
 						vs = gameInstance->GetManager< me::render::IVertexShader >()->Find( name );
 					}
-					else if( name.empty() && !source.Empty() )
+					else if( name.empty() && !source.IsEmpty() )
 					{
-						vs = gameInstance->GetManager< me::render::IVertexShader >()->Add( source.ToString(), source )();
+						vs = *gameInstance->GetManager< me::render::IVertexShader >()->Add( source.ToString(), source );
 					}
 					else
 					{
@@ -124,19 +124,19 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 			if( psNode )
 			{
 				std::string name = psNode->GetAttributeElse( "name", std::string() );
-				unify::Path source = psNode->GetAttributeElse( "source", unify::Path() );
+				unify::Path source(psNode->GetAttributeElse( "source", std::string() ));
 
-				if( !name.empty() && !source.Empty() )
+				if( !name.empty() && !source.IsEmpty() )
 				{
-					ps = gameInstance->GetManager< me::render::IPixelShader >()->Add( name, source )();
+					ps = *gameInstance->GetManager< me::render::IPixelShader >()->Add( name, source );
 				}
-				else if( !name.empty() && source.Empty() )
+				else if( !name.empty() && source.IsEmpty() )
 				{
 					ps = gameInstance->GetManager< me::render::IPixelShader >()->Find( name );
 				}
-				else if( name.empty() && !source.Empty() )
+				else if( name.empty() && !source.IsEmpty() )
 				{
-					ps = gameInstance->GetManager< me::render::IPixelShader >()->Add( source.ToString(), source )();
+					ps = *gameInstance->GetManager< me::render::IPixelShader >()->Add( source.ToString(), source );
 				}
 				else
 				{

@@ -71,18 +71,18 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
 			unify::Path path( node->GetAttributeElse< std::string >( "source", std::string() ) );
 
-			if( !name.empty() && path.Empty() )
+			if( !name.empty() && path.IsEmpty() )
 			{
 				ps = gameInstance->GetManager< IPixelShader >()->Find( name );
 			}
-			else if( name.empty() && ! path.Empty() )
+			else if( name.empty() && ! path.IsEmpty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path ).Else(report);
+				ps = *gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path )/*SAS TODO: (SEE ALL) .Else(report)*/;
 
 			}
-			else if( !name.empty() && !path.Empty() )
+			else if( !name.empty() && !path.IsEmpty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( name, path ).Else(report);
+				ps = *gameInstance->GetManager< IPixelShader >()->Add( name, path )/*Else(report)*/;
 			}
 		}
 
@@ -92,17 +92,17 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
 			unify::Path path( node->GetAttributeElse< std::string >( "source", std::string() ) );
 
-			if( !name.empty() && path.Empty() )
+			if( !name.empty() && path.IsEmpty() )
 			{
 				vs = gameInstance->GetManager< IVertexShader >()->Find( name );
 			}
-			else if( name.empty() && !path.Empty() )
+			else if( name.empty() && !path.IsEmpty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add(path.ToString(), path).Else(report);
+				vs = *gameInstance->GetManager< IVertexShader >()->Add(path.ToString(), path)/*.Else(report)*/;
 			}
-			else if( !name.empty() && !path.Empty() )
+			else if( !name.empty() && !path.IsEmpty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( name, path ).Else(report);
+				vs = *gameInstance->GetManager< IVertexShader >()->Add( name, path )/*.Else(report)*/;
 			}
 		}
 		color.reset( new Effect( vs, ps ) );
@@ -122,17 +122,17 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
 			unify::Path path( node->GetAttributeElse< std::string >( "source", std::string() ) );
 
-			if( !name.empty() && path.Empty() )
+			if( !name.empty() && path.IsEmpty() )
 			{
 				ps = gameInstance->GetManager< IPixelShader >()->Find( name );
 			}
-			else if( name.empty() && !path.Empty() )
+			else if( name.empty() && !path.IsEmpty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path).Else(report);
+				ps = *gameInstance->GetManager< IPixelShader >()->Add( path.ToString(), path);/*.Else(report);*/
 			}
-			else if( !name.empty() && !path.Empty() )
+			else if( !name.empty() && !path.IsEmpty() )
 			{
-				ps = gameInstance->GetManager< IPixelShader >()->Add( name, path ).Else(report);
+				ps = *gameInstance->GetManager< IPixelShader >()->Add( name, path );/*.Else(report)*/;
 			}
 		}
 
@@ -147,17 +147,17 @@ __declspec(dllexport) bool MELoader( me::game::IGame * gameBase, const qxml::Ele
 			std::string name = node->GetAttributeElse< std::string >( "name", std::string() );
 			unify::Path path( node->GetAttributeElse< std::string >( "source", std::string() ) );
 
-			if( !name.empty() && path.Empty() )
+			if( !name.empty() && path.IsEmpty() )
 			{
 				vs = gameInstance->GetManager< IVertexShader >()->Find( name );
 			}
-			else if( name.empty() && !path.Empty() )
+			else if( name.empty() && !path.IsEmpty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path ).Else(report);
+				vs = *gameInstance->GetManager< IVertexShader >()->Add( path.ToString(), path );/*.Else(report)*/;
 			}
-			else if( !name.empty() && !path.Empty() )
+			else if( !name.empty() && !path.IsEmpty() )
 			{
-				vs = gameInstance->GetManager< IVertexShader >()->Add( name, path ).Else(report);
+				vs = *gameInstance->GetManager< IVertexShader >()->Add( name, path );/*.Else(report)*/;
 			}
 		}
 		texture.reset( new Effect( vs, ps ) );

@@ -26,7 +26,7 @@ VertexWeights::VertexWeights( IDocument & document, const qxml::Element * node )
 			{
 				right = text.find( sep, left );
 				std::string value = text.substr( left, right - left );
-				m_vcount.push_back( unify::Cast< int >( value ) );
+				m_vcount.push_back( *unify::FromString< int >( value ) ); // SAS TODO: Make all FromString and ToString calls checked.
 				left = right + 1;
 			} while( right != std::string::npos );
 		}
@@ -42,7 +42,7 @@ VertexWeights::VertexWeights( IDocument & document, const qxml::Element * node )
 			{
 				right = text.find( sep, left );
 				std::string value = text.substr( left, right - left );
-				m_v.push_back( unify::Cast< int >( value ) );
+				m_v.push_back( *unify::FromString< int >( value ) );
 				left = right + 1;
 			} while( right != std::string::npos );
 		}

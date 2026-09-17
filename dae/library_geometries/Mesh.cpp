@@ -7,9 +7,10 @@
 #include <dae/Document.h>
 #include <unify/V3.h>
 #include <unify/TexCoords.h>
-#include <unify/DataLock.h>
+#include <me/util/DataLock.h>
 
 using namespace dae;
+using namespace me;
 
 typedef std::vector< float > VFloat;
 typedef std::vector< int > VInt;
@@ -121,7 +122,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 		{
 			if( shading->GetDiffuse().GetType() == Shading::Property::ColorType )
 			{
-				diffuse = unify::Color( shading->GetDiffuse().GetColor() );
+				diffuse = unify::Cast<unify::Color>( shading->GetDiffuse().GetColor() );
 				myEffect->SetTexture( 0, me::render::ITexture::ptr() ); // Unset texture.
 			}
 			else // Is texture...
@@ -166,7 +167,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 		render::VertexElement boneWeightsE = render::CommonVertexElement::Generic( stream, 2, me::render::ElementFormat::Float4 );
 
 		std::shared_ptr< unsigned char > vertices( new unsigned char[ vd->GetSizeInBytes( 0 ) * numberOfVertices ] );
-		unify::DataLock lock( vertices.get(), (unsigned int)vd->GetSizeInBytes( 0 ), (unsigned int)numberOfVertices, unify::DataLockAccess::ReadWrite, 0 );
+		me::util::DataLock lock( vertices.get(), (unsigned int)vd->GetSizeInBytes( 0 ), (unsigned int)numberOfVertices, me::util::DataLockAccess::ReadWrite, 0 );
 
 		unify::BBox< float > bbox;
 
@@ -185,7 +186,7 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 				const std::vector< float > & floats = ci.source->GetFloatArray().GetArrayContents();
 				size_t offsetOfFloats = indexOfDAEVertex * ci.input->GetStride();
 
-				if ( unify::string::StringIs( metaType, "POSITION" ) || unify::string::StringIs( metaType, "VERTEX" ) )
+				if ( unify::String::StringIs( metaType, "POSITION" ) || unify::String::StringIs( metaType, "VERTEX" ) )
 				{
 					unify::V3< float > val{
 						floats[offsetOfFloats + 0], floats[offsetOfFloats + 1], floats[offsetOfFloats + 2] 
@@ -229,12 +230,12 @@ void Mesh::Build( me::render::Mesh & mesh, const unify::Matrix & matrix, const B
 						WriteVertex( *vd, lock, vertexIndex, boneWeightsE, boneWeights );
 					}
 				}
-				else if ( unify::string::StringIs( metaType, "NORMAL" ) )
+				else if ( unify::String::StringIs( metaType, "NORMAL" ) )
 				{
 					unify::V3< float > val( floats[ offsetOfFloats + 0 ], floats[ offsetOfFloats + 1 ], floats[ offsetOfFloats + 2 ] );
 					WriteVertex( *vd, lock, vertexIndex, normalE, val );
 				}
-				else if ( unify::string::StringIs( metaType, "TEXCOORD" ) )
+				else if ( unify::String::StringIs( metaType, "TEXCOORD" ) )
 				{
 					WriteVertex( *vd, lock, vertexIndex, texE, unify::TexCoords( floats[ offsetOfFloats + 0 ], floats[ offsetOfFloats + 1 ] * -1.0f ) );
 				}
