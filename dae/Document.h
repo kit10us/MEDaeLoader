@@ -28,12 +28,20 @@ namespace dae
 	class Document : public IDocument
 	{
 	public:
-		Document( me::game::Game * gameInstance, unify::Path filePath, util::IEffectSolver * effectSolver );
+		using ptr = std::shared_ptr<Document>;
+
+		Document();
+		
+		unify::Result<> Create(me::game::Game * gameInstance, unify::Path filePath, util::IEffectSolver * effectSolver );
+
+		void Destroy();
 
 		/// <summary>
 		/// DAE attribute: version
 		/// </summary>
 		std::string GetVersion() const;
+
+		unify::Path GetPath() const;
 
 		me::render::Effect::ptr GetEffect( const Effect * effect ) const;
 
@@ -52,7 +60,8 @@ namespace dae
 		me::render::IRenderer * GetRenderer() override;
 
 	private:
-	me::game::Game *m_game;
+		me::game::Game *m_game;
+		unify::Path m_path;
 		std::string m_version;
 		std::shared_ptr< LibraryNodes > m_library_nodes;
 		std::shared_ptr< LibraryMaterials > m_library_materials;

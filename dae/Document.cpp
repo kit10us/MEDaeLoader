@@ -7,11 +7,16 @@
 
 using namespace dae;
 
-Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::util::IEffectSolver * effectSolver )
-	: m_game{ gameInstance }
-	, m_effectSolver( effectSolver )
+Document::Document()
+	: m_game{}
 {
-	auto debug = m_game->Debug();
+}
+
+// SAS TODO: Try to remove direct references to game::Game, and instead have wrappers/interfaces that provide the functionality of game (to disconnect Game from DAE DLL) perhaps a "DOM" object?.
+unify::Result<> Document::Create(me::game::Game * gameInstance, unify::Path filePath, dae::util::IEffectSolver * effectSolver )
+{
+	m_game = gameInstance;
+	m_effectSolver = effectSolver;
 
 	qxml::Document doc( filePath );
 	qxml::Element * node = doc.GetRoot();
@@ -19,8 +24,10 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 	// Validity check...
 	if ( ! node->IsTagName( "COLLADA" ) )
 	{
-		throw Exception_MissingCOLLADA( node->GetDocument()->GetPath().ToString() );
+		return unify::Failure{"COLLADA DAE file \"" + filePath.ToString() + "\" must have the root element \"COLLADA\"!"};
 	}
+
+	m_path = filePath;
 
 	// Attributes...
 	m_version = node->GetAttribute< std::string >( "version" );
@@ -108,16 +115,12 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 					}
 					else
 					{
-						debug->ReportError( me::debug::ErrorLevel::Failure, "DAE Loader", "VertexShader must have name and/or path!" );
+						return unify::Failure{"DAE Loader: VertexShader must have name and/or path!"};
 					}
-				}
-				catch( std::exception ex )
-				{
-					debug->ReportError( me::debug::ErrorLevel::Failure, "failed in loading effect file \"" + effectPath.ToString() + "\"! " + ex.what() );
 				}
 				catch( ... )
 				{
-					debug->ReportError( me::debug::ErrorLevel::Failure, "failed in loading effect file \"" + effectPath.ToString() + "\"!" );
+					return unify::Failure{"DAE Loader: failed in loading effect file \"" + effectPath.ToString() + "\"!"};
 				}
 			}
 
@@ -140,7 +143,7 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 				}
 				else
 				{
-					debug->ReportError( me::debug::ErrorLevel::Failure, "Failed in loading effect file \"" + effectPath.ToString() + "\"! PixelShader must have name and/or path!" );
+					return unify::Failure{"Failed in loading effect file \"" + effectPath.ToString() + "\"! PixelShader must have name and/or path!"};
 				}
 			}
 
@@ -149,6 +152,12 @@ Document::Document( me::game::Game * gameInstance, unify::Path filePath, dae::ut
 			m_effects[effectName] = me::render::Effect::ptr( new me::render::Effect{ vs, ps } );
 		}
 	}
+	return unify::Success{};
+}
+
+void Document::Destroy()
+{
+	// TODO:
 }
 
 std::string Document::GetVersion() const

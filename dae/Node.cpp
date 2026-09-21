@@ -21,7 +21,7 @@ Node::Node( IDocument & document, const dae::Node * parent, const qxml::Element 
 		if ( childNode->IsTagName( "matrix" ) )
 		{
 			std::vector< float > components;
-			components = unify::Split< float >( childNode->GetText() );
+			components = unify::Split< float >( childNode->GetText(), ' ' );
 			unify::Matrix transform;
 			transform.Set( 0, 0, components.at( 0 ) );
 			transform.Set( 1, 0, components.at( 1 ) );

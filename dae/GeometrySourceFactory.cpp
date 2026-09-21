@@ -16,9 +16,15 @@ GeometrySourceFactory::GeometrySourceFactory( me::game::Game * renderer, util::I
 
 unify::Result<me::render::Geometry::ptr> GeometrySourceFactory::Produce( unify::Path path, unify::Parameters parameters )
 {
-	dae::Document doc( m_game, path, m_effectSolver.get() );
+	dae::Document::ptr doc = std::make_shared<dae::Document>();
+	auto result = doc->Create(m_game, path, m_effectSolver.get());
+	if (!result)
+	{
+		return unify::Failure{result.Message()};
+	}
+
 	me::render::Mesh * mesh = new me::render::Mesh( "file: " + path.ToString(), m_game->GetOS()->GetRenderer(0) );
-	const dae::VisualScene & visualScene = *dynamic_cast< const dae::VisualScene* >(doc.Find( doc.GetScene().GetInstanceVisualScene()->GetURL() ));
+	const dae::VisualScene & visualScene = *dynamic_cast< const dae::VisualScene* >(doc->Find( doc->GetScene().GetInstanceVisualScene()->GetURL() ));
 	visualScene.Build( *mesh );
 	mesh->ComputeBounds();
 	return me::render::Geometry::ptr( mesh );

@@ -9,11 +9,6 @@ Polylist::Polylist( IDocument & document, const qxml::Element * node )
 , m_count( node->GetAttribute< int >( "count" ) )
 , m_material( node->GetAttributeElse( "material", std::string() ) )
 {
-	std::vector< char > splitDelimitors;
-	splitDelimitors.push_back( ' ' );
-	splitDelimitors.push_back( '\n' );
-	splitDelimitors.push_back( '\t' );
-
 	if ( node->IsTagName( "polylist" ) )
 	{
 		m_type = PolylistType;
@@ -39,11 +34,11 @@ Polylist::Polylist( IDocument & document, const qxml::Element * node )
 		}
 		else if ( childNode->IsTagName( "vcount" ) )
 		{
-			m_vcount = unify::Split< int >( childNode->GetText() );
+			m_vcount = unify::Split< int >( childNode->GetText(), ' ' );
 		}
 		else if ( childNode->IsTagName( "p" ) )
 		{
-			m_p = unify::Split< int >( childNode->GetText() );
+			m_p = unify::Split< int >( childNode->GetText(), ' ' );
 		}
 	}
 }

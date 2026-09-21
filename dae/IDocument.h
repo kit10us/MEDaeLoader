@@ -12,9 +12,11 @@ namespace dae
 
 	/// <summary>
 	/// </summary>
-	class IDocument
+	class IDocument // SAS TODO: Perhaps obsolete.
 	{
 	public:
+		using ptr = std::shared_ptr<IDocument>;
+
 		virtual ~IDocument(){}
 		virtual std::string GetVersion() const = 0;
 

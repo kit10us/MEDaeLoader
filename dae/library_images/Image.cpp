@@ -21,8 +21,10 @@ Image::Image( IDocument & document, const qxml::Element * node )
 			{
 				filename = filename.erase( 0, strlen( "file:///" ) );
 			}
-																	 			
-			unify::Path source = unify::Path( childNode->GetDocument()->GetPath().DirectoryOnly(), unify::Path( filename ) ).Normalize();
+
+			// Path is relative to document path.
+			auto document_path = childNode->GetDocument()->GetPath().DirectoryOnly();
+			auto source = unify::Path( document_path, unify::Path( filename ) ).Normalize();
 			m_texture = document.GetRenderer()->ProduceT( {source} );
 		}
 	}
